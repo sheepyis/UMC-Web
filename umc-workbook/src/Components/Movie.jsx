@@ -13,8 +13,10 @@ function Movie(props) {
             </div>
 
             <div className="overExplain">
-                <p id="overTitle">{props.movieData.title}</p>
-                <p id="overView">{props.movieData.overview}</p>
+                <div className="overExplainContainer">
+                    <p id="overTitle">{props.movieData.title}</p>
+                    <p id="overView">{props.movieData.overview}</p>
+                </div>
             </div>
         </div>
     )

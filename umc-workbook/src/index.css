@@ -13,20 +13,24 @@ body{
     width: 11%;
     margin-top:1.5vw;
     position: relative;
+    background-color:blueviolet;
+    display:flex;
+    flex-direction: column;
+    align-items:center;
 }
 
 img{
-    width: 100%;
-    height:80%;
+    width: 90%;
+    min-height: 15vw;
+    margin-top:0.5vw;
 }
 
 .movieExplain{
     width:100%;
-    height:19%;
+    min-height:5%;
     display:flex;
     justify-content: space-between;
     color:white;
-    background-color: blueviolet;
     font-size:0.8vw;
     cursor:pointer;
 }
@@ -50,8 +54,10 @@ img{
     color:white;
     font-size:0.5vw;
     width:100%;
-    height:100%;
+    height: 100%;
     display:none;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .movieContainer:hover .overExplain {
