@@ -1,23 +1,39 @@
-import React from 'react'
+import React from 'react';
+import {
+    MovieContainer,
+    MovieImage,
+    MovieExplain,
+    OverExplain,
+    OverTitle,
+    OverView,
+} from './Movie.style';
 
-function Movie(props) {
+const Movie = (props) => {
     const posterUrl = `https://image.tmdb.org/t/p/w500${props.movieData.poster_path}`;
 
-    return (
-        <div className="movieContainer">
-            <img src={posterUrl} alt={props.movieData.title}/>
+    const handleMouseOver = (e) => {
+        e.currentTarget.querySelector('.overExplain').style.display = 'block';
+    };
 
-            <div className="movieExplain">
+    const handleMouseOut = (e) => {
+        e.currentTarget.querySelector('.overExplain').style.display = 'none';
+    };
+
+    return (
+        <MovieContainer onMouseOver={handleMouseOver} onMouseOut={handleMouseOut}>
+            <MovieImage src={posterUrl} alt={props.movieData.title} />
+
+            <MovieExplain>
                 <p id="movieTitle">{props.movieData.title}</p>
                 <p id="movieVote">{props.movieData.vote_average}</p>
-            </div>
+            </MovieExplain>
 
-            <div className="overExplain">
-                <p id="overTitle">{props.movieData.title}</p>
-                <p id="overView">{props.movieData.overview}</p>
-            </div>
-        </div>
-    )
-}
+            <OverExplain className="overExplain">
+                <OverTitle>{props.movieData.title}</OverTitle>
+                <OverView>{props.movieData.overview}</OverView>
+            </OverExplain>
+        </MovieContainer>
+    );
+};
 
-export default Movie
+export default Movie;
