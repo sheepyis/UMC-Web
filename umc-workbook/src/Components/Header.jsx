@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import LoginControl from './LoginControl';
 
 const HeaderContainer = styled.div`
     background: darkblue;
@@ -16,7 +17,7 @@ const HeaderP = styled.p`
     font-weight: bold;
 `
 
-function Header() {
+const Header = () => {
     return (
         <HeaderContainer>
             <Link to="/">
@@ -28,6 +29,7 @@ function Header() {
             <Link to="/movie" style={{textDecoration: "none"}}><HeaderP>영화</HeaderP></Link>
             <Link to="/tv"  style={{textDecoration: "none"}}><HeaderP>TV 프로그램</HeaderP></Link>
             <Link to="/person"  style={{textDecoration: "none"}}><HeaderP>인물</HeaderP></Link>
+            <LoginControl/>
         </HeaderContainer>
     )
 }

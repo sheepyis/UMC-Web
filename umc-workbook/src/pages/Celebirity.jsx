@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Celebirity() {
+const Celebirity = () => {
   return (
     <div>
       Celebirity

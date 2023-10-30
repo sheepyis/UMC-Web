@@ -1,5 +1,5 @@
 import React from 'react';
-import ad from "../assets/images/Untitled.svg"
+import ad from "../assets/images/ad.svg"
 
 const Ad = ({ showAd }) => {
   if (!showAd) {
