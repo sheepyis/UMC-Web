@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import Ad from '../Components/Ad';
 
-class AdPage extends Component {
-  constructor(props) {
+class AdPage extends Component {  // AdPage 클래스 정의
+  constructor(props) {  // 생성자 함수 사용으로 초기 상태 설정
     super(props);
     this.state = {
-      showAd: true,
+      showAd: true, // 초기상태: 광고 표시
     };
   }
 
+  // 버튼 내부 텍스트 반전 효과
   handleToggleClick = () => {
     this.setState((prevState) => ({
       showAd: !prevState.showAd,
