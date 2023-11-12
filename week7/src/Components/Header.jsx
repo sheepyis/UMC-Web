@@ -2,7 +2,7 @@ import React from 'react'
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
 // import LoginControl from './LoginControl';
-import LoginControl from "./LoginControl2";
+import LoginControl2 from "./LoginControl2";
 
 const HeaderContainer = styled.div`
     background: darkblue;
@@ -30,7 +30,7 @@ const Header = () => {
             <Link to="/movie" style={{textDecoration: "none"}}><HeaderP>영화</HeaderP></Link>
             <Link to="/tv"  style={{textDecoration: "none"}}><HeaderP>TV 프로그램</HeaderP></Link>
             <Link to="/person"  style={{textDecoration: "none"}}><HeaderP>인물</HeaderP></Link>
-            <LoginControl/>
+            <LoginControl2/>
         </HeaderContainer>
     )
 }
