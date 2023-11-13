@@ -66,7 +66,6 @@ const OverView = styled.p`
 `;
 
 const Movie = () => {
-    //마우스 hover 효과 있을 때만 상세 설명 보이도록
     const handleMouseOver = (e) => {
         e.currentTarget.querySelector('.overExplain').style.display = 'block';
     };
@@ -75,7 +74,6 @@ const Movie = () => {
         e.currentTarget.querySelector('.overExplain').style.display = 'none';
     };
 
-    // useNavigate
     const navigate = useNavigate();
 
     const handleMovieClick = (movie) => {
@@ -84,7 +82,6 @@ const Movie = () => {
 
     return (
         <Container>
-            {/* map 함수 이용해서 movieDummy 데이터 파일의 내용 불러오기 */}
             {movies.results.map((movie, index) => (
                 <MovieContainer
                     key={index}
