@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import axios from 'axios';
+// import { API } from "../api/axios";
+import axios from "axios";
 import { useDispatch } from 'react-redux';
 import { updateUserId, updateUserPw } from '../actions/userActions';
 import styled from "styled-components";
@@ -37,33 +38,32 @@ const Login = () => {
         setLoading(true);
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/user/login/', { 
-                id: username, 
-                pw: password 
+            // const response = await API.post('http://localhost:8000/user/login/', { 
+            const response = await axios.post('http://localhost:8000/user/login/', { 
+                headers: { "Content-Type": "application/json" },
+                id:username,
+                pw:password 
+/*                 body: JSON.stringify({
+                    id: username,
+                    pw: password,
+                }), */
             });
+            console.log(response);
             
-            if (response.data.code === 200) {
-                console.log("로그인 성공", response.data.userInfo);
+            if (response.status === 200) {
+                alert("로그인 성공");
                 dispatch(updateUserId(username));
                 dispatch(updateUserPw(password));
-            } else {
-                throw new Error(response.data.code.toString());
+            } else if (response.status === 400) {
+                alert("모든 필드를 채워주세요.");
+            } else if (response.status === 401) {
+                alert("존재하지 않는 아이디입니다.")
+                console.log(response);
+            } else if (response.status === 402) {
+                alert("비밀번호가 틀렸습니다.")
             }
         } catch (error) {
-            const errorCode = error.message;
-            switch (errorCode) {
-                case '400':
-                    alert('모든 필드를 채워주세요.');
-                    break;
-                case '401':
-                    alert('존재하지 않는 아이디입니다.');
-                    break;
-                case '402':
-                    alert('비밀번호가 틀렸습니다.');
-                    break;
-                default:
-                    alert('로그인 요청 중 오류가 발생했습니다.');
-            }
+            console.error(error)
         } finally {
             setTimeout(() => setLoading(false), 1500);
         }
