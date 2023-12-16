@@ -38,32 +38,31 @@ const Login = () => {
         setLoading(true);
 
         try {
-            // const response = await API.post('http://localhost:8000/user/login/', { 
-            const response = await axios.post('http://localhost:8000/user/login/', { 
-                headers: { "Content-Type": "application/json" },
-                id:username,
-                pw:password 
-/*                 body: JSON.stringify({
-                    id: username,
-                    pw: password,
-                }), */
+            const response = await axios.post('http://localhost:8000/user/login/', {
+                id: username,
+                pw: password
             });
+
             console.log(response);
-            
+
             if (response.status === 200) {
                 alert("로그인 성공");
+                
+                localStorage.setItem('token', response.data.result.AccessToken);
+                localStorage.setItem('id', response.data.result.userId);
+                
                 dispatch(updateUserId(username));
                 dispatch(updateUserPw(password));
             } else if (response.status === 400) {
                 alert("모든 필드를 채워주세요.");
             } else if (response.status === 401) {
-                alert("존재하지 않는 아이디입니다.")
+                alert("존재하지 않는 아이디입니다.");
                 console.log(response);
             } else if (response.status === 402) {
-                alert("비밀번호가 틀렸습니다.")
+                alert("비밀번호가 틀렸습니다.");
             }
         } catch (error) {
-            console.error(error)
+            console.error(error);
         } finally {
             setTimeout(() => setLoading(false), 1500);
         }
